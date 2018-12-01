@@ -15,7 +15,7 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $products = Product::orderBy('created_at', 'DESC')->get();
+        $products = Product::orderby('id', 'ASC')->get();
 
         $data = [
             'products' => $products,
@@ -49,24 +49,27 @@ class ProductController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'name' => 'required',
-            'price' => 'required|integer',
-            'unit' => 'required',
-            'description' => 'required',
+            'name'=>'required',
+            'price'=>'required|integer',
+            'size'=>'required',
+            'cpu'=>'required',
+            'gpu'=>'required',
+            'ram'=>'required',
+            'storage'=>'required',
+            'description'=>'required',
         ]);
 
         Product::create($request->all());
-
         return redirect()->route('products.index');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Product  $product
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Product $product)
+    public function show($id)
     {
         //
     }
@@ -93,16 +96,20 @@ class ProductController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Product  $product
+     * @param  \App\Product $product
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Product $product)
+    public function update(Request $request,Product $product)
     {
         $this->validate($request, [
-            'name' => 'required',
-            'price' => 'required|integer',
-            'unit' => 'required',
-            'description' => 'required',
+            'name'=>'required',
+            'price'=>'required|integer',
+            'size'=>'required',
+            'cpu'=>'required',
+            'gpu'=>'required',
+            'ram'=>'required',
+            'storage'=>'required',
+            'description'=>'required',
         ]);
 
         $product->update($request->all());
@@ -113,7 +120,7 @@ class ProductController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Product  $product
+     * @param  \App\Product $product
      * @return \Illuminate\Http\Response
      */
     public function destroy(Product $product)

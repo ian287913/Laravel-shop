@@ -5,18 +5,32 @@
     <section class="sidebar">
 
         <!-- Sidebar user panel (optional) -->
-        <div class="user-panel">
+        <div class="user-panel" style="margin-top:10px">
             <div class="pull-left image">
                 <img src="{{ asset('img/user2-160x160.jpg') }}" class="img-circle" alt="User Image">
             </div>
             <div class="pull-left info">
-                <p>Alexander Pierce</p>
+                <p>{{ Auth::user()->name }}</p>
                 <!-- Status -->
-                <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
+
+                <p style="color:lightslategray"><i class="fa fa-circle text-success" style="color:limegreen"></i>   {{ Auth::user()->email }}</p>
+                <!--<a href="#"><i class="fa fa-circle text-success"></i> Online</a>-->
             </div>
         </div>
 
-        <!-- search form (Optional) -->
+
+        <ul style="padding:10px">
+            <li>
+                <a class="btn btn-success pull-left" style="color: #ffffff" role="button" href="{{ route('logout') }}"
+                   onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a>
+                <a class="btn btn-primary " style="color: #ffffff; margin-left: 10px"  role="button" href="#">Edit</a>
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                    @csrf
+                </form>
+            </li>
+        </ul>
+
+        <!--
         <form action="#" method="get" class="sidebar-form">
             <div class="input-group">
                 <input type="text" name="q" class="form-control" placeholder="Search...">
@@ -26,17 +40,20 @@
             </span>
             </div>
         </form>
+        -->
         <!-- /.search form -->
 
         <!-- Sidebar Menu -->
         <ul class="sidebar-menu" data-widget="tree">
             <li class="header">管理系統</li>
             <!-- Optionally, you can add icons to the links -->
+            <!--
             <li class="{{ (request()->is('/'))? 'active' : '' }}">
                 <a href="{{ route('dashboard.index') }}">
                     <i class="fa fa-dashboard"></i> <span>主控台</span>
                 </a>
             </li>
+            -->
             <li class="treeview{{ (request()->is('products*'))? ' active' : '' }}">
                 <a href="#">
                     <i class="fa fa-shopping-bag"></i>

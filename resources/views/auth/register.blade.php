@@ -14,6 +14,8 @@
     <link rel="stylesheet" href="{{ asset('css/ionicons.min.css') }}">
     <!-- Theme style -->
     <link rel="stylesheet" href="{{ asset('css/AdminLTE.min.css') }}">
+    <!-- iCheck -->
+    <link rel="stylesheet" href="{{ asset('plugins/iCheck/square/blue.css') }}">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -28,59 +30,77 @@
 </head>
 <body class="hold-transition register-page">
 <div class="register-box">
-    <div class="register-logo">
-        <a href="{{ route('dashboard.index') }}"><b>Admin</b>LTE</a>
+    <div class="login-logo">
+        <a href="{{ route('dashboard.index') }}">My<b>Product</b>Admin</a>
     </div>
 
-    <div class="register-box-body">
-        <p class="login-box-msg">註冊新帳號</p>
-
-        @if ($errors->any())
-        <div class="alert alert-danger alert-dismissible">
-            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-            <h4><i class="icon fa fa-ban"></i> 錯誤！</h4>
-            請修正以下表單錯誤：
-            <ul>
-                @foreach($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                @endforeach
-            </ul>
+    <div class="box box-primary" style="margin-bottom: 5px">
+        <div class="box-header with-border" style="text-align: center">
+            <h3 class="box-title">Register</h3>
         </div>
-        @endif
-
-        <form action="{{ route('register') }}" method="post">
-
+        <!-- /.box-header -->
+        @if ($errors->any())
+            <div class="alert alert-danger alert-dismissible">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                <i class="fa fa-times-circle-o"></i> Input error:
+                <ul>
+                    @foreach($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+    @endif
+    <!-- form start -->
+        <form class="form-horizontal" action="{{ route('register') }}" method="post">
             @csrf
+            <div class="box-body" style="margin-left: 10px; margin-right: 10px">
+                <div class="input-group">
+                    <span class="input-group-addon" style="background-color: lightcyan"><span class="glyphicon glyphicon-user"></span></span>
+                    <input style="background-color: lightcyan" type="text" name="name" class="form-control" placeholder="Name" value="{{ old('name') }}" required autofocus>
 
-            <div class="form-group has-feedback">
-                <input type="text" name="name" class="form-control" placeholder="請輸入姓名" value="{{ old('name') }}" required autofocus>
-                <span class="glyphicon glyphicon-user form-control-feedback"></span>
-            </div>
-            <div class="form-group has-feedback">
-                <input type="email" name="email" class="form-control" placeholder="請輸入 Email" value="{{ old('email') }}" required>
-                <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
-            </div>
-            <div class="form-group has-feedback">
-                <input type="password" name="password" class="form-control" placeholder="請輸入密碼" required>
-                <span class="glyphicon glyphicon-lock form-control-feedback"></span>
-            </div>
-            <div class="form-group has-feedback">
-                <input type="password" name="password_confirmation" class="form-control" placeholder="請再輸入一次密碼" required>
-                <span class="glyphicon glyphicon-log-in form-control-feedback"></span>
-            </div>
-            <div class="row">
-                <div class="col-xs-8">
-                    <a href="{{ route('login') }}" class="text-center">已經有帳號？</a>
                 </div>
-                <!-- /.col -->
-                <div class="col-xs-4">
-                    <button type="submit" class="btn btn-primary btn-block btn-flat">註冊</button>
+                <br>
+                <div class="input-group">
+                    <span class="input-group-addon" style="background-color: lightcyan"><span class="glyphicon glyphicon-envelope"></span></span>
+                    <input style="background-color: lightcyan" type="email" name="email" class="form-control" placeholder="Email" value="{{ old('email') }}" required>
+
                 </div>
-                <!-- /.col -->
+                <br>
+                <div class="input-group">
+                    <span class="input-group-addon" style="background-color: lightcyan"><span class="glyphicon glyphicon-lock"></span></span>
+                    <input style="background-color: lightcyan" type="password" name="password" class="form-control" placeholder="Password" required>
+
+                </div>
+                <br>
+                <div class="input-group">
+                    <span class="input-group-addon" style="background-color: lightcyan"><span class="glyphicon glyphicon-check"></span></span>
+                    <input style="background-color: lightcyan" type="password" name="password_confirmation" class="form-control" placeholder="Confirm" required>
+
+                </div>
             </div>
+            <!-- /.box-body -->
+            <div class="box-footer" style="margin-left: 10px; margin-right: 10px">
+                <div class="row">
+                    <div class="col-xs-8" style="padding-left: 0px">
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }} style="width: 100%; height: 100%" required> Love this website
+                            </label>
+                        </div>
+                    </div>
+                    <div class="col-xs-4">
+                        <button type="submit" class="btn btn-primary pull-right">Register</button>
+                    </div>
+                </div>
+            </div>
+            <!-- /.box-footer -->
         </form>
     </div>
-    <!-- /.form-box -->
+
+    <div style="text-align: center; font-size: 16px">
+        <a href="{{ route('login') }}" class="text-center" >Have an account？</a>
+    </div>
+
 </div>
 <!-- /.register-box -->
 
@@ -88,5 +108,16 @@
 <script src="{{ asset('js/jquery.min.js') }}"></script>
 <!-- Bootstrap 3.3.7 -->
 <script src="{{ asset('js/bootstrap.min.js') }}"></script>
+<!-- iCheck -->
+<script src="{{ asset('plugins/iCheck/icheck.min.js') }}"></script>
+<script>
+    $(function () {
+        $('input').iCheck({
+            checkboxClass: 'icheckbox_square-blue',
+            radioClass: 'iradio_square-blue',
+            increaseArea: '20%' /* optional */
+        });
+    });
+</script>
 </body>
 </html>

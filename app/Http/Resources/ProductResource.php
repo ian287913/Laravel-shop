@@ -2,6 +2,7 @@
 
 namespace App\Http\Resources;
 
+use App\Category;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 class ProductResource extends JsonResource
@@ -17,10 +18,15 @@ class ProductResource extends JsonResource
         return [
             'id' => $this->id,
             'name' => $this->name,
-            //'tag_line' => str_limit($this->description, 20),
-            'description' => $this->description,
             'price' => $this->price,
-            'unit' => $this->unit,
+            'size' => $this->size,
+            'cpu' => $this->cpu,
+            'gpu' => $this->gpu,
+            'ram' => $this->ram,
+            'storage' => $this->storage,
+            'description' => $this->description,
+            'category_id' => $this->category_id,
+            //'tag_line' => str_limit($this->description, 20),
             //'date' => $this->updated_at->format('Y/m/d'),
             'created_at' => $this->created_at->format('Y/m/d H:i:s'),
             'updated_at' => $this->updated_at->format('Y/m/d H:i:s'),

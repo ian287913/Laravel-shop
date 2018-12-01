@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>重設密碼</title>
+    <title>Reset password</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <!-- Bootstrap 3.3.7 -->
@@ -31,55 +31,59 @@
 <body class="hold-transition login-page">
 <div class="login-box">
     <div class="login-logo">
-        <a href="{{ route('dashboard.index') }}"><b>Admin</b>LTE</a>
+        <a href="{{ route('dashboard.index') }}">My<b>Product</b>Admin</a>
     </div>
     <!-- /.login-logo -->
-    <div class="login-box-body">
-        <p class="login-box-msg">忘記密碼</p>
 
+
+    <div class="box box-danger" style="margin-bottom: 5px; ">
+        <div class="box-header with-border" style="text-align: center">
+            <h3 class="box-title">Email verification</h3>
+        </div>
         @if ($errors->any())
-        <div class="alert alert-danger alert-dismissible">
-            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-            <h4><i class="icon fa fa-ban"></i> 錯誤！</h4>
-            請修正以下表單錯誤：
-            <ul>
-                @foreach($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                @endforeach
-            </ul>
-        </div>
+            <div class="alert alert-danger alert-dismissible">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                input error：
+                <ul>
+                    @foreach($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
         @endif
-
         @if (session('status'))
-        <div class="alert alert-success alert-dismissible">
-            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-            <h4><i class="icon fa fa-ban"></i> 成功！</h4>
-            {{ session('status') }}
-        </div>
+            <div class="alert alert-success alert-dismissible">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                <h4><i class="icon fa fa-check-circle"></i> Success</h4>
+                {{ session('status') }}
+                (actually just logging)
+            </div>
         @endif
 
-        <form action="{{ route('password.email') }}" method="post">
-
+    <!-- form start -->
+        <form class="form-horizontal" action="{{ route('password.email') }}" method="post">
             @csrf
-
-            <div class="form-group has-feedback">
-                <input type="email" name="email" class="form-control" placeholder="請輸入 Email" value="{{ old('email') }}" required autofocus>
-                <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
-            </div>
-            <div class="row">
-                <div class="col-xs-8">
-
+            <div class="box-body" style="margin-left: 10px; margin-right: 10px">
+                <div class="input-group">
+                    <span class="input-group-addon" style="background-color: lightcyan"><span class="glyphicon glyphicon-envelope"></span></span>
+                    <input style="background-color: lightcyan" type="email" name="email" class="form-control" placeholder="Email" value="{{ old('email') }}" required autofocus>
                 </div>
-                <!-- /.col -->
-                <div class="col-xs-4">
-                    <button type="submit" class="btn btn-primary btn-block btn-flat">送出</button>
-                </div>
-                <!-- /.col -->
             </div>
+            <!-- /.box-body -->
+            <div class="box-footer" style="margin-left: 10px; margin-right: 10px">
+                <div class="row">
+                    <div class="col-xs-8" style="padding-left: 20px; color: gray">
+                        Send password reset link <br>to your email
+                    </div>
+                    <div class="col-xs-4">
+                        <button type="submit" class="btn btn-danger pull-right">Send</button>
+                    </div>
+                </div>
+            </div>
+            <!-- /.box-footer -->
         </form>
-
     </div>
-    <!-- /.login-box-body -->
+
 </div>
 <!-- /.login-box -->
 

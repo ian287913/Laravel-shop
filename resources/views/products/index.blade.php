@@ -46,10 +46,10 @@
                             </tr>
                             @foreach ($products as $product)
                             <tr>
-                                <td>{{ $product->id }}.</td>
+                                <td>{{ $product->id }}</td>
                                 <td>{{ $product->name }}</td>
                                 <td>{{ $product->category->name }}</td>
-                                <td>{{ $product->price }} 元/{{ $product->unit }}</td>
+                                <td>{{ $product->price }}</td>
                                 <td class="text-center">
                                     <a href="{{ route('products.edit', $product->id) }}" class="btn btn-xs btn-primary">編輯</a>
                                     <form action="{{ route('products.destroy', $product->id) }}" method="post" style="display: inline-block">

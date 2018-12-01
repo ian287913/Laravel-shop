@@ -17,8 +17,12 @@ class CreateProductsTable extends Migration
             $table->increments('id');
 
             $table->string('name');
-            $table->float('price')->default(0.00);
-            $table->string('unit', 5);
+            $table->double('price');
+            $table->string('size');
+            $table->string('cpu');
+            $table->string('gpu');
+            $table->string('ram');
+            $table->string('storage');
             $table->text('description');
 
             $table->timestamps();

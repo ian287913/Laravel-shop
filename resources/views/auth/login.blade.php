@@ -29,14 +29,76 @@
           href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 </head>
 <body class="hold-transition login-page">
+
+
 <div class="login-box">
     <div class="login-logo">
-        <a href="{{ route('dashboard.index') }}"><b>Admin</b>LTE</a>
+        <a href="{{ route('dashboard.index') }}">My<b>Product</b>Admin</a>
     </div>
-    <!-- /.login-logo -->
+
+    <!-- Horizontal Form -->
+    <div class="box box-info" style="margin-bottom: 5px">
+        <div class="box-header with-border" style="text-align: center">
+            <h3 class="box-title">Login</h3>
+        </div>
+        <!-- /.box-header -->
+        @if ($errors->any())
+            <div class="alert alert-danger alert-dismissible">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                <i class="fa fa-times-circle-o"></i> Input error:
+                <ul>
+                    @foreach($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
+        <!-- form start -->
+        <form class="form-horizontal" action="{{ route('login') }}" method="post">
+            @csrf
+            <div class="box-body" style="margin-left: 10px; margin-right: 10px">
+                <div class="input-group">
+                    <span class="input-group-addon" style="background-color: lightcyan"><span class="glyphicon glyphicon-envelope"></span></span>
+                    <input style="background-color: lightcyan" type="email" name="email" class="form-control" placeholder="Email" value="{{ old('email') }}" required autofocus>
+
+                </div>
+                <br>
+                <div class="input-group">
+                    <span class="input-group-addon" style="background-color: lightcyan"> <i class="glyphicon glyphicon-lock"></i>  </span>
+                    <input style="background-color: lightcyan" type="password" name="password" class="form-control" placeholder="Password" required>
+
+                </div>
+            </div>
+            <!-- /.box-body -->
+            <div class="box-footer" style="margin-left: 10px; margin-right: 10px">
+                <div class="row">
+                    <div class="col-xs-8" style="padding-left: 0px">
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }} required> Don't forget me
+                            </label>
+                        </div>
+                    </div>
+                    <div class="col-xs-4">
+                        <button type="submit" class="btn btn-info pull-right">Sign in</button>
+                    </div>
+                </div>
+            </div>
+            <!-- /.box-footer -->
+        </form>
+    </div>
+
+    <div style="padding-left: 10px;padding-right: 10px">
+        <div class="pull-left" style="text-align: center; font-size: 16px">
+            <a href="{{ route('password.request') }}" class="text-center" >Forget password?</a>
+        </div>
+        <div class="pull-right" style="text-align: center; font-size: 16px">
+            <a href="{{ route('register') }}" class="text-center" >Register</a>
+        </div>
+    </div>
+    <!--
     <div class="login-box-body">
         <p class="login-box-msg">請登入帳號</p>
-
         @if ($errors->any())
         <div class="alert alert-danger alert-dismissible">
             <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
@@ -70,18 +132,14 @@
                         </label>
                     </div>
                 </div>
-                <!-- /.col -->
                 <div class="col-xs-4">
                     <button type="submit" class="btn btn-primary btn-block btn-flat">登入</button>
                 </div>
-                <!-- /.col -->
             </div>
         </form>
-
-        <a href="{{ route('password.request') }}">忘記密碼</a> | <a href="{{ route('register') }}" class="text-center">註冊帳號</a>
-
     </div>
-    <!-- /.login-box-body -->
+    -->
+
 </div>
 <!-- /.login-box -->
 

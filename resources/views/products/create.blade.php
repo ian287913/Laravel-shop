@@ -54,27 +54,43 @@
 
                                 <div class="form-group">
                                     <label for="title">名稱</label>
-                                    <input type="text" class="form-control" id="title" name="name" placeholder="請輸入名稱" value="{{ old('name') }}">
+                                    <input type="text" class="form-control" id="title" name="name" placeholder="請輸入名稱" value="{{old('name')}}">
                                 </div>
                                 <div class="form-group">
                                     <label for="category">分類</label>
                                     <select id="category" name="category_id" class="form-control">
                                         @foreach($categories as $category)
-                                        <option value="{{ $category->id }}"{{ (old('category_id') == $category->id)? ' selected' : '' }}>{{ $category->name }}</option>
+                                            <option value="{{ $category->id }}"{{ (old('category_id') == $category->id)? ' selected' : '' }}>{{ $category->name }}</option>
                                         @endforeach
                                     </select>
-                                </div>
+                                    </div>
                                 <div class="form-group">
                                     <label for="price">價格</label>
-                                    <input type="text" class="form-control" id="price" name="price" placeholder="請輸入價格" value="{{ old('price') }}">
+                                    <input type="text" class="form-control" id="price" name="price" placeholder="請輸入價格" value="{{old('price')}}">
                                 </div>
                                 <div class="form-group">
-                                    <label for="unit">單位</label>
-                                    <input type="text" class="form-control" id="unit" name="unit" placeholder="請輸入單位" value="{{ old('unit') }}">
+                                    <label for="size">螢幕</label>
+                                    <input type=text" class="form-control" id="size" name="size" placeholder="請輸入大小" value="{{old('size')}}">
+                                </div>
+                                <div class="form-group">
+                                    <label for="cpu">CPU</label>
+                                    <input type=text" class="form-control" id="cpu" name="cpu" placeholder="請輸入CPU" value="{{old('cpu')}}">
+                                </div>
+                                <div class="form-group">
+                                    <label for="gpu">GPU</label>
+                                    <input type=text" class="form-control" id="gpu" name="gpu" placeholder="請輸入GPU" value="{{old('gpu')}}">
+                                </div>
+                                <div class="form-group">
+                                    <label for="ram">RAM</label>
+                                    <input type=text" class="form-control" id="ram" name="ram" placeholder="請輸入RAM" value="{{old('ram')}}">
+                                </div>
+                                <div class="form-group">
+                                    <label for="storage">容量</label>
+                                    <input type=text" class="form-control" id="storage" name="storage" placeholder="請輸入容量" value="{{old('storage')}}">
                                 </div>
                                 <div class="form-group">
                                     <label for="description">描述</label>
-                                    <textarea class="form-control" id="description" name="description" rows="5" placeholder="請輸入描述">{{ old('description') }}</textarea>
+                                    <textarea class="form-control" id="description" rows="5" name="description" placeholder="請輸入描述">{{old('description')}}</textarea>
                                 </div>
                                 <div class="form-group">
                                     <label for="cover">產品圖</label>
@@ -84,7 +100,7 @@
                             <!-- /.box-body -->
 
                             <div class="box-footer text-right">
-                                <a class="btn btn-link" href="#">取消</a>
+                                <a class="btn btn-link" href="{{ route('products.index') }}">取消</a>
                                 <button type="submit" class="btn btn-primary">新增</button>
                             </div>
                         </form>
