@@ -33,7 +33,7 @@
                         </div>
                         <!-- /.box-header -->
                         <!-- form start -->
-                        <form role="form" action="{{ route('products.update', $product->id) }}" method="post">
+                        <form role="form" action="{{ route('products.update', $product->id) }}" method="post" enctype="multipart/form-data">
 
                             @csrf
                             @method('PATCH')
@@ -95,7 +95,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="cover">產品圖</label>
-                                    <input type="file" id="cover">
+                                    <input type="file" id="cover" name="img">
                                 </div>
                             </div>
                             <!-- /.box-body -->

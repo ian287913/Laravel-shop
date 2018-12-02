@@ -25,6 +25,7 @@ class ProductResource extends JsonResource
             'ram' => $this->ram,
             'storage' => $this->storage,
             'description' => $this->description,
+            'img' => $this->img,
             'category_id' => $this->category_id,
             //'tag_line' => str_limit($this->description, 20),
             //'date' => $this->updated_at->format('Y/m/d'),

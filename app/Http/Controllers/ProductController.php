@@ -57,9 +57,17 @@ class ProductController extends Controller
             'ram'=>'required',
             'storage'=>'required',
             'description'=>'required',
+            'img'=>'required|image',
         ]);
 
-        Product::create($request->all());
+        $product = Product::create($request->all());
+
+        if($request->hasFile('img')){
+            $request->file('img')->store('public/images');
+            $name = $request->file('img')->hashName();
+            $product->update(['img' => 'storage/images/' . $name]);
+        }
+
         return redirect()->route('products.index');
     }
 
@@ -113,6 +121,12 @@ class ProductController extends Controller
         ]);
 
         $product->update($request->all());
+
+        if($request->hasFile('img')){
+            $request->file('img')->store('public/images');
+            $name = $request->file('img')->hashName();
+            $product->update(['img' => 'storage/images/' . $name]);
+        }
 
         return redirect()->route('products.index');
     }

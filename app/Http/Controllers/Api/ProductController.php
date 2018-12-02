@@ -16,9 +16,7 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $products = Product::orderBy('id', 'asc')
-            ->take(10)
-            ->get();
+        $products = Product::orderBy('id', 'asc')->get();
 
         return ProductResource::collection($products);
     }

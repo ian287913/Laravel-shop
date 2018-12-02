@@ -24,6 +24,7 @@ class CreateProductsTable extends Migration
             $table->string('ram');
             $table->string('storage');
             $table->text('description');
+            $table->string('img');
 
             $table->timestamps();
         });
