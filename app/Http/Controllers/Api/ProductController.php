@@ -21,4 +21,11 @@ class ProductController extends Controller
         return new ProductResource($product);
     }
 
+    public function searchByName(string $searchKey)
+    {
+        $products = Product::orderBy('id', 'ASC')->where('name', 'like', '%'.$searchKey.'%')->get();
+
+        return ProductResource::collection($products);
+    }
+
 }

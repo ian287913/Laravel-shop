@@ -54,6 +54,13 @@
                 </a>
             </li>
             -->
+
+            <li class="{{ (request()->is('/'))? 'active' : '' }}">
+                <a href="{{ route('api.index') }}">
+                    <i class="fa fa-address-book"></i> <span>API</span>
+                </a>
+            </li>
+
             <li class="treeview{{ (request()->is('products*'))? ' active' : '' }}">
                 <a href="#">
                     <i class="fa fa-shopping-bag"></i>

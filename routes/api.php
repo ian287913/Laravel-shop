@@ -19,6 +19,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::get('products', 'Api\ProductController@index')->name('api.index');
 Route::get('products/{product}', 'Api\ProductController@show');
+Route::get('products/name/{searchKey}', 'Api\ProductController@searchByName');
 
 Route::post('register', 'Api\AuthController@register');
 Route::post('login', 'Api\AuthController@login');
