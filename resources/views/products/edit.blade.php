@@ -12,7 +12,7 @@
                 <small></small>
             </h1>
             <ol class="breadcrumb">
-                <li><a href="#"><i class="fa fa-shopping-bag"></i> 商品管理</a></li>
+                <li><a href="{{ route('products.index') }}"><i class="fa fa-shopping-bag"></i> 商品管理</a></li>
                 <li class="active">編輯商品</li>
             </ol>
         </section>

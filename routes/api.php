@@ -35,7 +35,7 @@ Route::middleware('auth:api')->group(function () {
 
     Route::get('cart', 'Api\CartController@show');
     Route::post('cart/add', 'Api\CartController@store');
-    Route::patch('cart/{item}', 'Api\CartController@update');
-    Route::delete('cart/{item}', 'Api\CartController@destroy');
+    Route::patch('cart/up/{item}', 'Api\CartController@update');
+    Route::delete('cart/del/{item}', 'Api\CartController@destroy');
 
 });
