@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers\Api;
 
+//use Illuminate\Contracts\Auth\UserProvider;
+//use Tymon\JWTAuth\Providers\Auth\Illuminate;
+
 use App\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
