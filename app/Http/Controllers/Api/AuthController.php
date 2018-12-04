@@ -3,9 +3,11 @@
 namespace App\Http\Controllers\Api;
 
 use App\User;
+use Illuminate\Contracts\Auth\UserProvider;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
+use Tymon\JWTAuth\Providers\Auth\Illuminate;
 
 class AuthController extends Controller
 {
@@ -45,18 +47,16 @@ class AuthController extends Controller
         );
 
         $credentials = request(['email', 'password']);
-
         if (! $token = auth('api')->attempt($credentials)) {
             return response()->json(['error' => 'Unauthorized'], 401);
         }
-
+        
         return $this->respondWithToken($token);
     }
 
     public function logout()
     {
         auth('api')->logout();
-
         return response()->json(['message' => 'Successfully logged out']);
     }
 
