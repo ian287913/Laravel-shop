@@ -14,7 +14,7 @@ use Illuminate\Http\Request;
 */
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
+    return response()->json($request->user());
 });
 
 Route::get('products', 'Api\ProductController@index')->name('api.index');
@@ -23,11 +23,18 @@ Route::get('products/{product}', 'Api\ProductController@show');
 Route::post('register', 'Api\AuthController@register');
 Route::post('login', 'Api\AuthController@login');
 
+
+
 Route::middleware('auth:api')->group(function () {
 
     Route::post('orders', 'Api\OrderController@store');
     Route::post('logout', 'Api\AuthController@logout');
     Route::post('me', 'Api\AuthController@me');
     Route::post('refresh', 'Api\AuthController@refresh');
+
+    Route::get('cart', 'Api\CartController@show');
+    Route::post('cart/add', 'Api\CartController@store');
+    Route::patch('cart/{item}', 'Api\CartController@update');
+    Route::delete('cart/{item}', 'Api\CartController@destroy');
 
 });

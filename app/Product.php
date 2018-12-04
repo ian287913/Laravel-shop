@@ -17,6 +17,7 @@ class Product extends Model
         'ram',
         'storage',
         'description',
+        'img',
         'category_id',
     ];
 
