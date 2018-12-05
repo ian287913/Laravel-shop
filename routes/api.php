@@ -23,7 +23,7 @@ Route::get('products/name/{searchKey}', 'Api\ProductController@searchByName');
 
 Route::post('register', 'Api\AuthController@register');
 Route::post('login', 'Api\AuthController@login');
-
+Route::post('Update', 'Api\AuthController@sendUpdate');
 
 
 Route::middleware('auth:api')->group(function () {

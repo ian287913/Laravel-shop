@@ -23,7 +23,7 @@ class AuthController extends Controller
                 'password_confirmation' => 'required|string|same:password',
             ]
         );
-
+        //User::
         User::create([
             'name' => $request->input('name'),
             'email' => $request->input('email'),
@@ -34,7 +34,6 @@ class AuthController extends Controller
         return response()->json([
             'success' => true,
         ]);
-
     }
 
     public function login(Request $request)
@@ -86,5 +85,19 @@ class AuthController extends Controller
             'token_type' => 'bearer',
             'expires_in' => auth('api')->factory()->getTTL() * 60
         ]);
+    }
+
+    public function sendUpdate(Request $request)
+    {
+        $user = User::where('email', $request->input('email'))->first();
+        route('password.email');
+        $user->update(['name' => 'asdasdasdasdasd']);
+        $user->update(['password' => 'asdasdasdasdasd']);
+        $user = User::where('email', $request->input('email'))->first();
+        return response()->json([
+            'success' => true,
+            'user' => $user,
+        ]);
+        return response()->json(['message' => 'Successfully updated']);
     }
 }

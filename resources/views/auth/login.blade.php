@@ -75,7 +75,7 @@
                     <div class="col-xs-8" style="padding-left: 0px">
                         <div class="checkbox">
                             <label>
-                                <input type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }} required> Don't forget me
+                                <input type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }} > Don't forget me
                             </label>
                         </div>
                     </div>
