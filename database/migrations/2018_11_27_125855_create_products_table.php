@@ -18,12 +18,14 @@ class CreateProductsTable extends Migration
 
             $table->string('name');
             $table->double('price');
+            // size 改成 數字
             $table->string('size');
             $table->string('cpu');
             $table->string('gpu');
             $table->string('ram');
             $table->string('storage');
             $table->text('description');
+            // 新增廠牌、螢幕解析度、電量、打折比例
             $table->string('img');
 
             $table->timestamps();

@@ -39,6 +39,7 @@ class AuthController extends Controller
 
     public function login(Request $request)
     {
+        // $myuser
         $this->validate(
             $request,
             [
@@ -50,13 +51,18 @@ class AuthController extends Controller
         $credentials = request(['email', 'password']);
 
         if (! $token = auth('api')->attempt($credentials)) {
-            return response()->json(['error' => 'Unauthorized'], 401);
+            return response()->json(['error' => 'Username or password '], 401);
         }
-
+        return response()->json([
+            'token' => $token,
+            'token_type' => 'bearer',
+            'expires_in' => auth('api')->factory()->getTTL() * 60,
+            'user' => auth('api')->user()
+        ]);
         return $this->respondWithToken($token);
     }
 
-    public function logout()
+    public function logout(Request $request)
     {
         auth('api')->logout();
 
