@@ -20,6 +20,11 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::get('products', 'Api\ProductController@index')->name('api.index');
 Route::get('products/{product}', 'Api\ProductController@show');
 Route::get('products/name/{searchKey}', 'Api\ProductController@searchByName');
+//依類別api->
+Route::get('products/price/{mode}', 'Api\ProductController@getPrice');
+Route::get('product/size/{size}', 'Api\ProductController@getSize');
+Route::get('products/category_id/{branch_id}', 'Api\ProductController@getBranch');
+//依作業系統api->
 
 Route::post('register', 'Api\AuthController@register');
 Route::post('login', 'Api\AuthController@login');

@@ -19,11 +19,13 @@ class Product extends Model
         'description',
         'img',
         'category_id',
+        'os_id',
     ];
 
     public function category()
     {
         return $this->belongsTo(Category::class);
+        return $this->belongsTo( OperationSystem::class);
     }
 
 }
