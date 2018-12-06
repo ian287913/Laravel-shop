@@ -1,4 +1,5 @@
 <!-- Main Header -->
+
 <header class="main-header">
 
     <!-- Logo -->
@@ -19,4 +20,12 @@
         -->
 
     </nav>
+    <script type="text/javascript">
+        $level = '<?php echo Auth::user()->level ?>'
+        //$user = Auth::user();
+        if($level !== '0') {
+            alert('此為管理員頁面，您即將被重新導向至購物區。');
+            document.location.href="http://localhost:4200";
+        }
+    </script>
 </header>
