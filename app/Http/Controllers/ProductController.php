@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use App\Category;
 use App\OperationSystem;
 use App\Product;
+use App\Tag;
 use Illuminate\Http\Request;
+use function MongoDB\BSON\toJSON;
 
 class ProductController extends Controller
 {
@@ -25,10 +27,12 @@ class ProductController extends Controller
     {
         $categories = Category::all();
         $OS = OperationSystem::all();
+        $Tags = Tag::all();
 
         $data = [
             'categories' => $categories,
             'OS' => $OS,
+            'Tags' => $Tags,
         ];
 
         return view('products.create', $data);
@@ -48,6 +52,12 @@ class ProductController extends Controller
             'img'=>'required|image',
         ]);
 
+        $tagString = '';
+        foreach ($_POST["tags"] as $value){
+            $tagString = $tagString.' '.$value;
+        }
+        $request['tags'] = $tagString;
+
         $product = Product::create($request->all());
 
         if($request->hasFile('img')){
@@ -63,11 +73,13 @@ class ProductController extends Controller
     {
         $categories = Category::all();
         $OS = OperationSystem::all();
+        $Tags = Tag::all();
 
         $data = [
             'product' => $product,
             'categories' => $categories,
             'OS' => $OS,
+            'Tags' => $Tags,
         ];
 
         return view('products.edit', $data);
@@ -85,6 +97,12 @@ class ProductController extends Controller
             'storage'=>'required',
             'description'=>'required',
         ]);
+
+        $tagString = '';
+        foreach ($_POST["tags"] as $value){
+            $tagString = $tagString.' '.$value;
+        }
+        $request['tags'] = $tagString;
 
         $product->update($request->all());
 

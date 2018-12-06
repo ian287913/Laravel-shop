@@ -100,6 +100,16 @@
                                     <label for="description">描述</label>
                                     <textarea class="form-control" id="description" rows="5" name="description" placeholder="請輸入描述">{{old('description')}}</textarea>
                                 </div>
+                                <!--checkbox for tags-->
+                                <div class="form-group">
+                                    <label for="tag">#tag</label>
+                                    <div>
+                                        @foreach($Tags as $tag)
+                                            <input type="checkbox" id="tags[]" name="tags[]" value="{{ $tag->name }}">
+                                            <label for="tag">{{ $tag->name }}</label>
+                                        @endforeach
+                                    </div>
+                                </div>
                                 <div class="form-group">
                                     <label for="cover">產品圖</label>
                                     <input type="file" id="cover" name="img">

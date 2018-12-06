@@ -20,13 +20,11 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::get('products', 'Api\ProductController@index')->name('api.index');
 Route::get('products/{product}', 'Api\ProductController@show');
 Route::get('products/name/{searchKey}', 'Api\ProductController@searchByName');
-Route::get('review/{product}', 'Api\ReviewController@show');
-//依類別api->
+Route::get('products/tag/{tag}','Api\ProductController@getTag');
 Route::get('products/price/{mode}', 'Api\ProductController@getPrice');
-Route::get('product/size/{size}', 'Api\ProductController@getSize');
+Route::get('product/size/{size}', 'Api\ProductController@getSize'); //未完成 應修改資料庫
 Route::get('products/category_id/{branch_id}', 'Api\ProductController@getBranch');
 Route::get('products/OS/{os}', 'Api\ProductController@getOS');
-
 
 Route::post('register', 'Api\AuthController@register');
 Route::post('login', 'Api\AuthController@login');
@@ -44,7 +42,5 @@ Route::middleware('auth:api')->group(function () {
     Route::post('cart/add', 'Api\CartController@store');
     Route::patch('cart/up/{item}', 'Api\CartController@update');
     Route::delete('cart/del/{item}', 'Api\CartController@destroy');
-
-    Route::post('review/add', 'Api\ReviewController@store');
 
 });
