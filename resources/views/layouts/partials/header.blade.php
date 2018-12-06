@@ -1,5 +1,4 @@
 <!-- Main Header -->
-
 <header class="main-header">
 
     <!-- Logo -->
@@ -20,12 +19,4 @@
         -->
 
     </nav>
-    <script type="text/javascript">
-        $level = '<?php echo Auth::user()->level ?>'
-        //$user = Auth::user();
-        if($level !== '0') {
-            alert('非工作人員請勿進入');
-            //document.location.href="http://localhost:4200";
-        }
-    </script>
 </header>

@@ -6,7 +6,6 @@ use App\Product;
 use App\Review;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Log;
 
 class ReviewController extends Controller
 {

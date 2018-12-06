@@ -25,6 +25,7 @@ Route::get('products/price/{mode}', 'Api\ProductController@getPrice');
 Route::get('product/size/{size}', 'Api\ProductController@getSize'); //未完成 應修改資料庫
 Route::get('products/category_id/{branch_id}', 'Api\ProductController@getBranch');
 Route::get('products/OS/{os}', 'Api\ProductController@getOS');
+Route::get('review/{product}', 'Api\ReviewController@show');
 
 Route::post('register', 'Api\AuthController@register');
 Route::post('login', 'Api\AuthController@login');
@@ -42,5 +43,7 @@ Route::middleware('auth:api')->group(function () {
     Route::post('cart/add', 'Api\CartController@store');
     Route::patch('cart/up/{item}', 'Api\CartController@update');
     Route::delete('cart/del/{item}', 'Api\CartController@destroy');
+
+    Route::post('review/add', 'Api\ReviewController@store');
 
 });
