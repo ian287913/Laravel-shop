@@ -20,12 +20,13 @@ class Product extends Model
         'img',
         'category_id',
         'os_id',
+        'tags',
     ];
 
     public function category()
     {
         return $this->belongsTo(Category::class);
-        return $this->belongsTo( OperationSystem::class);
+        return $this->belongsTo(OperationSystem::class);
     }
 
     public function reviews()

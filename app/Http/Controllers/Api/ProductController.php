@@ -28,6 +28,13 @@ class ProductController extends Controller
         return ProductResource::collection($products);
     }
 
+    public function getTag(string $tag)
+    {
+        $products = Product::orderBy('id', 'ASC')->where('tags', 'like', '%'.$tag.'%')->get();
+
+        return ProductResource::collection($products);
+    }
+
     public function getPrice(string $mode)
     {
         $products = Product::orderBy('price', $mode)->get();
@@ -35,6 +42,7 @@ class ProductController extends Controller
         return ProductResource::collection($products);
     }
 
+    //未完成部分
     public function getSize(string $size)
     {
         $products = Product::orderBy('id', 'ASC')->get();
@@ -47,5 +55,13 @@ class ProductController extends Controller
 
         return ProductResource::collection($products);
     }
+
+    public function getOS(string $os)
+    {
+        $products = Product::orderBy('id', 'ASC')->where('os_id', $os)->get();
+
+        return ProductResource::collection($products);
+    }
+
 
 }
