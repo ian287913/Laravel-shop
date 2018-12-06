@@ -48,4 +48,11 @@ class ProductController extends Controller
         return ProductResource::collection($products);
     }
 
+    public function getOS(string $os)
+    {
+        $products = Product::orderBy('id', 'ASC')->where('os_id', $os)->get();
+
+        return ProductResource::collection($products);
+    }
+
 }

@@ -25,7 +25,7 @@ Route::get('review/{product}', 'Api\ReviewController@show');
 Route::get('products/price/{mode}', 'Api\ProductController@getPrice');
 Route::get('product/size/{size}', 'Api\ProductController@getSize');
 Route::get('products/category_id/{branch_id}', 'Api\ProductController@getBranch');
-//依作業系統api->
+Route::get('products/OS/{os}', 'Api\ProductController@getOS');
 
 
 Route::post('register', 'Api\AuthController@register');
