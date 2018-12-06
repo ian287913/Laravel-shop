@@ -17,7 +17,11 @@
         </ol>
     </section>
 
-
+    @if (Auth::user()->level !== 0)
+        <div style="margin-left: 20%; margin-top: 15%; font-size: 45px">
+            此為管理員頁面，請轉移至<a href="http://localhost:4200/">購物頁面</a>。
+        </div>
+    @endif
 
     <!-- Main content -->
     <section class="content container-fluid">

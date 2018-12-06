@@ -21,7 +21,7 @@
 
         <ul style="padding:10px">
             <li>
-                <a class="btn btn-success pull-left" style="color: #ffffff" role="button" href="{{ route('logout') }}"
+                <a class="btn btn-success pull-left" style="color: #ffffff" role="button"
                    onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a>
                 <a class="btn btn-primary " style="color: #ffffff; margin-left: 10px"  role="button" href="http://localhost:4200/">Go shopping</a>
                 <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
