@@ -63,7 +63,15 @@
                                             <option value="{{ $category->id }}"{{ (old('category_id') == $category->id)? ' selected' : '' }}>{{ $category->name }}</option>
                                         @endforeach
                                     </select>
-                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="os">作業系統</label>
+                                    <select id="os" name="os_id" class="form-control">
+                                        @foreach($OS as $os)
+                                            <option value="{{ $os->id }}"{{ (old('category_id') == $os->id)? ' selected' : '' }}>{{ $os->name }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
                                 <div class="form-group">
                                     <label for="price">價格</label>
                                     <input type="text" class="form-control" id="price" name="price" placeholder="請輸入價格" value="{{old('price')}}">
