@@ -23,10 +23,12 @@
             <li>
                 <a class="btn btn-success pull-left" style="color: #ffffff" role="button" href="{{ route('logout') }}"
                    onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a>
-                <a class="btn btn-primary " style="color: #ffffff; margin-left: 10px"  role="button" href="#">Edit</a>
+                <a class="btn btn-primary " style="color: #ffffff; margin-left: 10px"  role="button" href="http://localhost:4200/">Go shopping</a>
                 <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                     @csrf
                 </form>
+
+
             </li>
         </ul>
 
@@ -44,6 +46,7 @@
         <!-- /.search form -->
 
         <!-- Sidebar Menu -->
+        @if (Auth::user()->level === 0)
         <ul class="sidebar-menu" data-widget="tree">
             <li class="header">管理系統</li>
             <!-- Optionally, you can add icons to the links -->
@@ -75,6 +78,7 @@
                 </ul>
             </li>
         </ul>
+        @endif
         <!-- /.sidebar-menu -->
     </section>
     <!-- /.sidebar -->
