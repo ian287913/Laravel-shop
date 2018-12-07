@@ -69,7 +69,7 @@
                                     <label for="os">作業系統</label>
                                     <select id="os" name="os_id" class="form-control">
                                         @foreach($OS as $os)
-                                            <option value="{{ $os->id }}"{{ (old('category_id', $product->os_id) == $os->id)? ' selected' : '' }}>{{ $os->name }}</option>
+                                            <option value="{{ $os->id }}"{{ (old('os_id', $product->os_id) == $os->id)? ' selected' : '' }}>{{ $os->name }}</option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -81,7 +81,7 @@
                                     <label for="size">螢幕</label>
                                     <select id="size" name="size" class="form-control">
                                         @foreach($SizeType as $sizetype)
-                                            <option value="{{ $sizetype->name }}"{{ (old('size', $sizetype->name) == $sizetype->name)? ' selected' : '' }}>{{ $sizetype->name }} 吋</option>
+                                            <option value="{{ $sizetype->name }}"{{ (old('size', $product->size) == $sizetype->name)? ' selected' : '' }}>{{ $sizetype->name }} 吋</option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -110,7 +110,7 @@
                                     <label for="tag">#tag</label>
                                     <div>
                                         @foreach($Tags as $tag)
-                                            <input type="checkbox" id="tags[]" name="tags[]" value="{{ $tag->name }}">
+                                            <input type="checkbox" id="tags[]" name="tags[]" value="{{ $tag->name }}" {{ ((strpos($product->tags, $tag->name) !== false) or (is_array(old('tags')) and in_array($tag->name, old('tags')))) ? ' checked' : '' }}>
                                             <label for="tag">{{ $tag->name }}</label>
                                         @endforeach
                                     </div>

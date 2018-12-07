@@ -56,8 +56,10 @@ class ProductController extends Controller
         ]);
 
         $tagString = '';
-        foreach ($_POST["tags"] as $value){
-            $tagString = $tagString.' '.$value;
+        if($request->get('tags')){
+            foreach ($_POST["tags"] as $value){
+                $tagString = $tagString.' '.$value;
+            }
         }
         $request['tags'] = $tagString;
 
@@ -92,6 +94,14 @@ class ProductController extends Controller
 
     public function update(Request $request,Product $product)
     {
+        $tagString = '';
+        if($request->get('tags')) {
+            foreach ($_POST["tags"] as $value){
+                $tagString = $tagString.' '.$value;
+            }
+        }
+        $product->update(['tags' => $tagString]);
+
         $this->validate($request, [
             'name'=>'required',
             'price'=>'required|integer',
@@ -103,12 +113,7 @@ class ProductController extends Controller
             'description'=>'required',
         ]);
 
-        $tagString = '';
-        foreach ($_POST["tags"] as $value){
-            $tagString = $tagString.' '.$value;
-        }
         $request['tags'] = $tagString;
-
         $product->update($request->all());
 
         if($request->hasFile('img')){
