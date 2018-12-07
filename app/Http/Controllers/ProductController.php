@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Category;
 use App\OperationSystem;
 use App\Product;
+use App\SizeType;
 use App\Tag;
 use Illuminate\Http\Request;
 use function MongoDB\BSON\toJSON;
@@ -28,11 +29,13 @@ class ProductController extends Controller
         $categories = Category::all();
         $OS = OperationSystem::all();
         $Tags = Tag::all();
+        $SizeType = SizeType::all();
 
         $data = [
             'categories' => $categories,
             'OS' => $OS,
             'Tags' => $Tags,
+            'SizeType' => $SizeType,
         ];
 
         return view('products.create', $data);
@@ -74,12 +77,14 @@ class ProductController extends Controller
         $categories = Category::all();
         $OS = OperationSystem::all();
         $Tags = Tag::all();
+        $SizeType = SizeType::all();
 
         $data = [
             'product' => $product,
             'categories' => $categories,
             'OS' => $OS,
             'Tags' => $Tags,
+            'SizeType' => $SizeType,
         ];
 
         return view('products.edit', $data);

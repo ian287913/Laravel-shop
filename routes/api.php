@@ -22,8 +22,8 @@ Route::get('products/{product}', 'Api\ProductController@show');
 Route::get('products/name/{searchKey}', 'Api\ProductController@searchByName');
 Route::get('products/tag/{tag}','Api\ProductController@getTag');
 Route::get('products/price/{mode}', 'Api\ProductController@getPrice');
-Route::get('product/size/{size}', 'Api\ProductController@getSize'); //未完成 應修改資料庫
-Route::get('products/category_id/{branch_id}', 'Api\ProductController@getBranch');
+Route::get('products/size/{size}', 'Api\ProductController@getSize');
+Route::get('products/category_id/{brand_id}', 'Api\ProductController@getBrand');
 Route::get('products/OS/{os}', 'Api\ProductController@getOS');
 Route::get('review/{product}', 'Api\ReviewController@show');
 

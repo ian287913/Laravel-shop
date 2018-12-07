@@ -42,16 +42,34 @@ class ProductController extends Controller
         return ProductResource::collection($products);
     }
 
-    //未完成部分
     public function getSize(string $size)
     {
-        $products = Product::orderBy('id', 'ASC')->get();
+        $products = Product::orderBy('id', 'asc');
+        if($size === '5') {
+            $products = $products->where('size', '>=', 17)->get();
+        }
+        else if($size === '4') {
+            $products = $products->whereBetween('size', array(15, 16.9))->get();
+        }
+        else if($size === '3') {
+            $products = $products->whereBetween('size', array(14, 14.9))->get();
+        }
+        else if($size === '2') {
+            $products = $products->whereBetween('size', array(13, 13.9))->get();
+        }
+        else if($size === '1'){
+            $products = $products->whereBetween('size', array(11, 12.9))->get();
+        }
+        else{
+            $products->get();
+        }
+
         return ProductResource::collection($products);
     }
 
-    public function getBranch(string $branch_id)
+    public function getBrand(string $brand_id)
     {
-        $products = Product::orderBy('id', 'ASC')->where('category_id', $branch_id)->get();
+        $products = Product::orderBy('id', 'ASC')->where('category_id', $brand_id)->get();
 
         return ProductResource::collection($products);
     }
