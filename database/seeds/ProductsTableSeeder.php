@@ -3,6 +3,7 @@
 use App\Category;
 use App\OperationSystem;
 use App\Product;
+use App\Tag;
 use Illuminate\Database\Seeder;
 
 class ProductsTableSeeder extends Seeder
@@ -17,6 +18,7 @@ class ProductsTableSeeder extends Seeder
         Product::truncate();
         Category::truncate();
         OperationSystem::truncate();
+        Tag::truncate();
 
         $faker = Faker\Factory::create('zh_TW');
         $tags = ['最新推出', '特價中','高效能', '高畫質', '高記憶體', '輕薄易攜', '電競筆電', '文書筆電'];
@@ -24,6 +26,12 @@ class ProductsTableSeeder extends Seeder
         $brand = ['Apple','MSI', 'ASUS', 'Acer','Lenovo','Hp'];
         $OS = ['Windows','MacOS','Linux'];
 
+
+        foreach (range(0,7) as $i){
+            Tag::create([
+                'name' => $tags[$i],
+            ]);
+        }
 
         foreach (range(0,5) as $i) {
             Category::create([
