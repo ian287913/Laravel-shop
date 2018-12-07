@@ -86,7 +86,7 @@ class AuthController extends Controller
             'expires_in' => auth('api')->factory()->getTTL() * 60
         ]);
     }
-
+//123
     public function sendUpdate(Request $request)
     {
         $user = User::where('email', $request->input('email'))->first();
