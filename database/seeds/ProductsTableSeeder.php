@@ -66,7 +66,7 @@ class ProductsTableSeeder extends Seeder
                 'description' => $faker->realText(rand(10, 15)),
                 'category_id' => rand(1, 6),
                 'os_id' => rand(1, 3),
-                'tags' => $tags[rand(0,8)],
+                'tags' => $tags[rand(0,4)].' '.$tags[rand(5,8)],
                 'img' => 'storage/images/nb.jpg',
                 'created_at' => now()->subDays($total - $id)->addHours(rand(1, 5))->addMinutes(rand(1, 5)),
                 'updated_at' => now()->subDays($total - $id)->addHours(rand(6, 10))->addMinutes(rand(10, 30)),
