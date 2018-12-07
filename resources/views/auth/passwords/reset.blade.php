@@ -81,7 +81,7 @@
                     <div class="col-xs-8" style="padding-left: 0px">
                         <div class="checkbox">
                             <label>
-                                <input type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }} style="width: 100%; height: 100%" required> I'm dump.
+                                <input type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }} style="width: 100%; height: 100%" required> I'm dumb.
                             </label>
                         </div>
                     </div>
