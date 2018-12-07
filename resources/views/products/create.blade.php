@@ -68,7 +68,7 @@
                                     <label for="os">作業系統</label>
                                     <select id="os" name="os_id" class="form-control">
                                         @foreach($OS as $os)
-                                            <option value="{{ $os->id }}"{{ (old('category_id') == $os->id)? ' selected' : '' }}>{{ $os->name }}</option>
+                                            <option value="{{ $os->id }}"{{ (old('os_id') == $os->id)? ' selected' : '' }}>{{ $os->name }}</option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -78,7 +78,11 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="size">螢幕</label>
-                                    <input type=text" class="form-control" id="size" name="size" placeholder="請輸入大小" value="{{old('size')}}">
+                                    <select id="size" name="size" class="form-control">
+                                        @foreach($SizeType as $sizetype)
+                                            <option value="{{ $sizetype->name }}"{{ (old('size') == $sizetype->name)? ' selected' : '' }}>{{ $sizetype->name }} 吋</option>
+                                        @endforeach
+                                    </select>
                                 </div>
                                 <div class="form-group">
                                     <label for="cpu">CPU</label>

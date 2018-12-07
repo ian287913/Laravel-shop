@@ -79,7 +79,11 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="size">螢幕</label>
-                                    <input type=text" class="form-control" id="size" name="size" placeholder="請輸入大小" value="{{old('size', $product->size)}}">
+                                    <select id="size" name="size" class="form-control">
+                                        @foreach($SizeType as $sizetype)
+                                            <option value="{{ $sizetype->name }}"{{ (old('size', $sizetype->name) == $sizetype->name)? ' selected' : '' }}>{{ $sizetype->name }} 吋</option>
+                                        @endforeach
+                                    </select>
                                 </div>
                                 <div class="form-group">
                                     <label for="cpu">CPU</label>

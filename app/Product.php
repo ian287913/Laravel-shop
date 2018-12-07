@@ -33,6 +33,11 @@ class Product extends Model
         return $this->belongsTo(OperationSystem::class);
     }
 
+    public function sizetype()
+    {
+        return $this->belongsTo(SizeType::class);
+    }
+
     public function reviews()
     {
         return $this->hasMany(Review::class);

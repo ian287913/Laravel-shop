@@ -18,8 +18,7 @@ class CreateProductsTable extends Migration
 
             $table->string('name');
             $table->double('price');
-            // size 改成 數字
-            $table->string('size');
+            $table->double('size');
             $table->string('cpu');
             $table->string('gpu');
             $table->string('ram');
